@@ -1,10 +1,12 @@
 from random import randrange
 
-OUT_NUMBER = randrange(5, 10)
+FILE_NAME = '11F.dat'
+OUT_NUMBER = 31415
 IN_RANGE = (1, 10)
 OUT_RANGE = (1, 10)
 IN_COUNT = randrange(1, 10)
-OUT_COUNT = randrange(1, 10)
+# OUT_COUNT = randrange(1, 10)
+OUT_COUNT = 1
 
 PARAMS = {
     'population_size': 100,
@@ -14,6 +16,8 @@ PARAMS = {
     'fit_function': 'fitExact'
 }
 
+
+# fitExact / fitInclude
 
 def generate_header(params):
     header = ', '.join(list(map(lambda x: x + "=" + str(params[x]), params.keys())))
@@ -28,9 +32,9 @@ def generate_ios(inputs_range: tuple[int, int], outputs_range: tuple[int, int], 
     for i in range(count):
         inputs = []
         outputs = []
-        for j in range(inputs_count):
+        for _ in range(inputs_count):
             inputs.append(str(randrange(inputs_range[0], inputs_range[1])))
-        for j in range(outputs_count):
+        for _ in range(outputs_count):
             outputs.append(str(randrange(outputs_range[0], outputs_range[1])))
         if req_num not in outputs:
             outputs[randrange(0, outputs_count)] = str(req_num)
@@ -45,10 +49,10 @@ def main(fn):
 
     with open(f'files/{fn}', 'w') as f:
         f.write(header + '\n')
-        f.write(str(IN_COUNT) + ' ' + str(OUT_COUNT) + '\n')
+        f.write(str(IN_COUNT) + '' + str(OUT_COUNT) + '\n')
         for io in ios:
-            f.write(' '.join(io[0]) + ' '.join(io[1]) + '\n')
+            f.write(' '.join(io[0]) + ' ' + ' '.join(io[1]) + '\n')
 
 
 if __name__ == '__main__':
-    main('1.dat')
+    main(FILE_NAME)
