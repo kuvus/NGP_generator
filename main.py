@@ -1,7 +1,7 @@
 from random import randrange
 
 FILE_NAME = '11F.dat'
-OUT_NUMBER = 31415
+OUT_NUMBER = 1
 IN_RANGE = (1, 10)
 OUT_RANGE = (1, 10)
 IN_COUNT = randrange(1, 10)
@@ -49,7 +49,7 @@ def main(fn):
 
     with open(f'files/{fn}', 'w') as f:
         f.write(header + '\n')
-        f.write(str(IN_COUNT) + '' + str(OUT_COUNT) + '\n')
+        f.write(str(IN_COUNT) + ' ' + str(OUT_COUNT) + '\n')
         for io in ios:
             f.write(' '.join(io[0]) + ' ' + ' '.join(io[1]) + '\n')
 
